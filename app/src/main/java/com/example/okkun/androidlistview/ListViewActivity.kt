@@ -1,10 +1,17 @@
 package com.example.okkun.androidlistview
 
+import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
 import com.example.okkun.androidlistview.adapter.DemoAdapter
 import com.example.okkun.androidlistview.data.Demo
+import kotlinx.android.synthetic.main.activity_list_view.view.*
+import kotlinx.android.synthetic.main.demo_list_row.view.*
 
 class ListViewActivity : AppCompatActivity() {
 
@@ -40,5 +47,15 @@ class ListViewActivity : AppCompatActivity() {
                 items
         )
         mListView.adapter = adapter
+        mListView.setOnItemClickListener { parent, view, position, id ->
+            val itemTextView1: TextView = view.findViewById(R.id.key1)
+            val itemTextView2: TextView = view.findViewById(R.id.key2)
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.put
+            intent.putExtra("key1", itemTextView1.text)
+            intent.putExtra("key2", itemTextView2.text)
+            startActivity(intent)
+//            Toast.makeText(applicationContext, itemTextView.text, Toast.LENGTH_LONG).show()
+        }
     }
 }
